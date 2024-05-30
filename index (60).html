@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customização de Camisa</title>
+    <style>
+        @font-face {
+            font-family: 'Aptos Black';
+            src: url('fonts/Aptos-Black.woff2') format('woff2'),
+                 url('fonts/Aptos-Black.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Aptos Black', sans-serif;
+            background-color: black; /* Cor de fundo preta */
+            color: white; /* Cor do texto branca */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            background-color: white;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+        }
+        header img {
+            height: 60px; /* Aumentado 50% de 40px para 60px */
+        }
+        .shirt-container {
+            position: relative;
+            width: 550px;
+            height: 550px;
+            margin-top: 20px;
+        }
+        .shirt-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #custom-name {
+            position: absolute;
+            top: 52%;
+            left: 47%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            font-weight: bold;
+            white-space: nowrap;
+            color: rgba(255, 255, 255, 0.9); /* Cor branca com 10% de transparência */
+        }
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .input-group input,
+        .input-group select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+        .input-group button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background: #C8102E;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .input-group button:hover {
+            background: #A00C23;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            display: none; /* Escondido inicialmente */
+        }
+        .button-group button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background: #C8102E;
+            color: white;
+            cursor: pointer;
+        }
+        .button-group button:hover {
+            background: #A00C23;
+        }
+        footer {
+            background-color: black;
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+        footer img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="https://marcaspelomundo.com.br/wp-content/uploads/2021/06/Kingston-FURY-logo-2021-CMYK.jpg" alt="Kingston FURY Logo">
+    </header>
+
+    <div class="shirt-container" id="shirt-container">
+        <img src="https://redcanids.com.br/loja/image/cache/catalog/UNIFORME%202024/PRETO/LOJA_BLACK_04-550x550.png" alt="Camiseta" class="shirt-image">
+        <div id="custom-name">Seu Nome</div>
+    </div>
+
+    <div class="footer">
+        <div class="input-group">
+            <input type="text" id="name-input" placeholder="Digite seu nome">
+            <button onclick="customizeShirt()">Customizar</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <label for="customer-name">Nome:</label>
+            <input type="text" id="customer-name" placeholder="Digite seu nome">
+        </div>
+        <div class="input-group">
+            <label for="shirt-size">Tamanho da camisa:</label>
+            <select id="shirt-size">
+                <option value="PP">PP</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+                <option value="XXG">XXG</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="button-group" id="button-group">
+        <button onclick="printPDF()">Gerar PDF</button>
+    </div>
+
+    <footer>
+        <img src="https://pbs.twimg.com/media/GMVPV7QWkAAb9Jw.jpg:large" alt="Footer Image">
+    </footer>
+
+    <script>
+        function customizeShirt() {
+            var name = document.getElementById('name-input').value;
+            if (name.trim() === '') {
+                alert('Por favor, digite um nome.');
+                return;
+            }
+            document.getElementById('custom-name').innerText = name;
+            document.getElementById('button-group').style.display = 'flex'; // Mostrar botão de gerar PDF
+        }
+
+        function printPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
