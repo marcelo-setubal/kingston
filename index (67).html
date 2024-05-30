@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customização de Camisa</title>
+    <style>
+        @font-face {
+            font-family: 'Aptos Black';
+            src: url('fonts/Aptos-Black.woff2') format('woff2'),
+                 url('fonts/Aptos-Black.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Aptos Black', sans-serif;
+            background-color: black; /* Cor de fundo preta */
+            color: white; /* Cor do texto branca */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.5s ease-in-out; /* Animação suave ao mudar a cor de fundo */
+        }
+        header {
+            background-color: white;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Mudança para espaço entre elementos */
+            box-sizing: border-box;
+            transition: background-color 0.5s ease-in-out; /* Animação suave ao mudar a cor de fundo */
+        }
+        header img {
+            height: 60px; /* Aumentado 50% de 40px para 60px */
+        }
+        .shirt-container {
+            position: relative;
+            width: 550px;
+            height: 550px;
+            margin-top: 20px;
+            transition: transform 0.5s ease-in-out; /* Animação suave ao mudar o tamanho */
+        }
+        .shirt-container:hover {
+            transform: scale(1.05); /* Aumenta ligeiramente ao passar o mouse */
+        }
+        .shirt-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #custom-name {
+            position: absolute;
+            top: 58%;
+            left: 47%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            font-weight: bold;
+            white-space: nowrap;
+            color: rgba(255, 255, 255, 0.9); /* Cor branca com 10% de transparência */
+            transition: font-size 0.5s ease-in-out, color 0.5s ease-in-out; /* Animação suave ao mudar tamanho e cor */
+        }
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            transition: transform 0.5s ease-in-out; /* Animação suave ao mudar o tamanho */
+        }
+        .input-group:hover {
+            transform: scale(1.05); /* Aumenta ligeiramente ao passar o mouse */
+        }
+        .input-group input,
+        .input-group select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Animação suave ao mudar a cor da borda */
+        }
+        .input-group select {
+            background-color: #C8102E;
+            color: white;
+        }
+        .input-group select:focus {
+            border-color: #A00C23; /* Cor da borda ao focar */
+            background-color: #A00C23;
+        }
+        .input-group input:focus {
+            border-color: #C8102E; /* Cor da borda ao focar */
+        }
+        .input-group button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background: #C8102E;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Animação suave ao mudar a cor de fundo e tamanho */
+        }
+        .input-group button:hover {
+            background: #A00C23;
+            transform: scale(1.1); /* Aumenta ligeiramente ao passar o mouse */
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            display: none; /* Escondido inicialmente */
+        }
+        .button-group button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background: #C8102E;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Animação suave ao mudar a cor de fundo e tamanho */
+        }
+        .button-group button:hover {
+            background: #A00C23;
+            transform: scale(1.1); /* Aumenta ligeiramente ao passar o mouse */
+        }
+        footer {
+            background-color: black;
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+        footer img {
+            max-width: 15%; /* Reduzido para 15% do tamanho original */
+            height: auto;
+            transition: transform 0.5s ease-in-out; /* Animação suave ao mudar o tamanho */
+        }
+        footer img:hover {
+            transform: scale(1.1); /* Aumenta ligeiramente ao passar o mouse */
+        }
+        .birthday-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="https://marcaspelomundo.com.br/wp-content/uploads/2021/06/Kingston-FURY-logo-2021-CMYK.jpg" alt="Kingston FURY Logo">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/d/df/RED_Canids_Kalunga.png" alt="RED Canids Logo">
+    </header>
+
+    <div class="shirt-container" id="shirt-container">
+        <img src="https://github.com/marcelo-setubal/kingston/blob/main/CAMISA.jpg?raw=true" alt="Camiseta" class="shirt-image">
+        <div id="custom-name">Seu Nome</div>
+    </div>
+
+    <div class="footer">
+        <div class="input-group">
+            <input type="text" id="name-input" placeholder="Digite seu nome">
+            <button onclick="customizeShirt()">Customizar</button>
+            <select id="shirt-size">
+                <option value="PP">PP</option>
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+                <option value="GG">GG</option>
+                <option value="XG">XG</option>
+                <option value="XXG">XXG</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <label for="customer-name">Nome:</label>
+            <input type="text" id="customer-name" placeholder="Digite seu nome">
+        </div>
+        <div class="input-group birthday-group">
+            <div>
+                <label for="birthday-day">Dia:</label>
+                <select id="birthday-day">
+                    <option value="" disabled selected>Dia</option>
+                    <!-- Lista de dias de 1 a 31 -->
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+            </div>
+            <div>
+                <label for="birthday-month">Mês:</label>
+                <select id="birthday-month">
+                    <option value="" disabled selected>Mês</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-group" id="button-group">
+        <button onclick="printPDF()">Gerar PDF</button>
+    </div>
+
+    <footer>
+        <img src="https://raw.githubusercontent.com/marcelo-setubal/kingston/main/rod.jpg" alt="Footer Image">
+    </footer>
+
+    <script>
+        function customizeShirt() {
+            var name = document.getElementById('name-input').value;
+            if (name.trim() === '') {
+                alert('Por favor, digite um nome.');
+                return;
+            }
+            document.getElementById('custom-name').innerText = name;
+            document.getElementById('button-group').style.display = 'flex'; // Mostrar botão de gerar PDF
+        }
+
+        function printPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
