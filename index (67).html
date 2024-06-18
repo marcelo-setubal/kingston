@@ -185,7 +185,33 @@
             </select>
         </div>
     </div>
+<!-- Nova Seção para Escolher a Cor da Camiseta -->
+<div class="shirt-choice-container">
+    <h2>Escolha a cor da camiseta</h2>
+    <div class="shirt-choice">
+        <img src="https://github.com/marcelo-setubal/kingston/blob/main/preto.png?raw=true" alt="Camiseta Preta" id="shirt-preta">
+        <img src="https://github.com/marcelo-setubal/kingston/blob/main/vernelho.png?raw=true" alt="Camiseta Vermelha" id="shirt-vermelha">
+    </div>
+    <div class="shirt-radio-group">
+        <label>
+            <input type="radio" name="shirt-color" value="preto" onclick="selectShirt('preto')"> Preto
+        </label>
+        <label>
+            <input type="radio" name="shirt-color" value="vermelho" onclick="selectShirt('vermelho')"> Vermelho
+        </label>
+    </div>
+</div>
 
+<script>
+    function selectShirt(color) {
+        var shirtImage = document.querySelector('.shirt-image');
+        if (color === 'preto') {
+            shirtImage.src = 'https://github.com/marcelo-setubal/kingston/blob/main/preto.png?raw=true';
+        } else if (color === 'vermelho') {
+            shirtImage.src = 'https://github.com/marcelo-setubal/kingston/blob/main/vernelho.png?raw=true';
+        }
+    }
+</script>
     <div class="form-group">
         <div class="input-group">
             <label for="customer-name">Nome:</label>
