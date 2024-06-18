@@ -154,6 +154,12 @@
             border-color: #C8102E; /* Cor da borda ao ser selecionado */
             transform: scale(1.1); /* Aumenta ligeiramente ao ser selecionado */
         }
+        /* Nova regra para reduzir o tamanho das camisetas não selecionadas */
+        .gallery-image:not(.selected) {
+            transform: scale(0.8); /* Reduz o tamanho para 80% do original */
+            opacity: 0.6; /* Reduz a opacidade para destacar a camiseta selecionada */
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Animação suave para mudanças de tamanho e opacidade */
+        }
         footer {
             background-color: black;
             width: 100%;
@@ -303,7 +309,7 @@
     </div>
 
     <div class="button-group" id="button-group">
-        <button onclick="printPDF()">Gerar Pedido</button>
+        <button onclick="printPDF()">Gerar PDF</button>
     </div>
 
     <footer>
