@@ -155,6 +155,49 @@
             justify-content: center;
             gap: 10px;
         }
+
+        /* Estilos para a nova seção de escolha de cor */
+        .shirt-choice-container {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .shirt-choice {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .shirt-thumbnail {
+            width: 150px;
+            height: auto;
+            border: 2px solid transparent; /* Borda transparente por padrão */
+        }
+
+        .shirt-thumbnail:hover {
+            border: 2px solid #C8102E; /* Borda destacada ao passar o mouse */
+        }
+
+        .shirt-radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 10px;
+        }
+
+        .shirt-radio-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+        }
+
+        .shirt-radio-group input[type="radio"] {
+            margin-top: 5px;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -185,33 +228,24 @@
             </select>
         </div>
     </div>
-<!-- Nova Seção para Escolher a Cor da Camiseta -->
-<div class="shirt-choice-container">
-    <h2>Escolha a cor da camiseta</h2>
-    <div class="shirt-choice">
-        <img src="https://github.com/marcelo-setubal/kingston/blob/main/preto.png?raw=true" alt="Camiseta Preta" id="shirt-preta">
-        <img src="https://github.com/marcelo-setubal/kingston/blob/main/vernelho.png?raw=true" alt="Camiseta Vermelha" id="shirt-vermelha">
-    </div>
-    <div class="shirt-radio-group">
-        <label>
-            <input type="radio" name="shirt-color" value="preto" onclick="selectShirt('preto')"> Preto
-        </label>
-        <label>
-            <input type="radio" name="shirt-color" value="vermelho" onclick="selectShirt('vermelho')"> Vermelho
-        </label>
-    </div>
-</div>
 
-<script>
-    function selectShirt(color) {
-        var shirtImage = document.querySelector('.shirt-image');
-        if (color === 'preto') {
-            shirtImage.src = 'https://github.com/marcelo-setubal/kingston/blob/main/preto.png?raw=true';
-        } else if (color === 'vermelho') {
-            shirtImage.src = 'https://github.com/marcelo-setubal/kingston/blob/main/vernelho.png?raw=true';
-        }
-    }
-</script>
+    <!-- Nova Seção para Escolher a Cor da Camiseta -->
+    <div class="shirt-choice-container">
+        <h2>Escolha a cor da camiseta</h2>
+        <div class="shirt-choice">
+            <img src="https://github.com/marcelo-setubal/kingston/blob/main/preto.png?raw=true" alt="Camiseta Preta" class="shirt-thumbnail">
+            <img src="https://github.com/marcelo-setubal/kingston/blob/main/vernelho.png?raw=true" alt="Camiseta Vermelha" class="shirt-thumbnail">
+        </div>
+        <div class="shirt-radio-group">
+            <label>
+                <input type="radio" name="shirt-color" value="preto"> Preto
+            </label>
+            <label>
+                <input type="radio" name="shirt-color" value="vermelho"> Vermelho
+            </label>
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="input-group">
             <label for="customer-name">Nome:</label>
@@ -282,7 +316,7 @@
     </div>
 
     <footer>
-        <img src="https://raw.githubusercontent.com/marcelo-setubal/kingston/main/rod.jpg" alt="Footer Image">
+        <img src="https://raw.githubusercontent.com/marcelo-setubal/kingston/blob/main/rod.jpg" alt="Footer Image">
     </footer>
 
     <script>
